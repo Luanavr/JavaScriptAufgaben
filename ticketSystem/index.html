@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Tickets bestellen</title>
+</head>
+<body>
+    <h1>Tickets bestellen</h1>
+    <form id="formular" name="fragebogen" action="https://blj-ict-bz.ch/formlog/" method= "post">
+        <div>
+            Email Adresse: 
+            <input id="input" type="text" name="email">
+        </div>
+        <div>
+            Anzahl Tickets: 
+            <select id="amount" type="text" name="amountOfTickets">
+                <option value="nothing">Bitte wählen</option>
+                <option value="1">1 Ticket</option>
+                <option value="2">2 Tickets</option>
+            </select>
+        </div>
+        <div> 
+            <input type="submit" value="Bestellung absenden"/> 
+        </div>
+    </form>
+    
+<script>
+    const form = document.getElementById("formular")
+    const input = document.getElementById("input");
+    const amount = document.getElementById("amount")
+
+    form.addEventListener("submit", validate);
+
+    function validate (e) {
+        e.preventDefault();
+        if (input.value == ""){
+            alert("bitte Email eingeben")
+            return;
+        } 
+        if (isValidEmail(input.value) == false){
+            alert("Bitte gültige Email angeben");
+            return;
+        }
+        
+        if (amount.value == "nothing" ){
+            alert("bitte Anzahl Tickets wählen");
+            return;
+        }
+        form.submit();
+    }
+    function isValidEmail(emailAddr) {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailAddr)) {
+        return (true)
+    }
+    return (false)
+}
+
+
+</script>
+
+</body>
+</html>

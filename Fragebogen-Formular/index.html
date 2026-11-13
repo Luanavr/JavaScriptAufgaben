@@ -4,7 +4,13 @@
    <title>Formular validieren</title>
    <script>
      function validieren(e) {
-         let form = document.forms["fragebogen"];
+       let form = document.forms["fragebogen"];
+      
+         console.log("hier");
+         console.log(form.elements["html"])
+         console.log(form.elements["html"].checked);
+
+        
          //verhindern, dass Formular abgeschickt wird.
          e.preventDefault(); 
          if (form.elements["fullname"].value == "")  {
@@ -12,14 +18,15 @@
             form.elements["fullname"].focus();
             return;
          } 
-         /*if (form.elements["gender"] == "") {
+         if (form.elements["gender"].value == "") {
             alert("Geschlecht fehlt.");
             return; 
          } 
-         if (todo!!!!) {
+         if (form.elements["html"].checked != "true" && form.elements["css"].checked != "true" && form.elements["js"].checked != "true") {
+
             alert("Teile uns bitte mit, wofür du dich interessierst.");
             return;
-         }*/
+         }
          //Formular abschicken.
          form.submit();
       }
@@ -27,7 +34,7 @@
 </head>
 <body>
    <h1>Formular</h1>
-   <form name="fragebogen" action="https://blj-ict-bz.ch/formlog/" method="post"">
+   <form name="fragebogen" action="https://blj-ict-bz.ch/formlog/" method= "post">
       <div>
          Dein Name: <input type="text" name="fullname" />
       </div>
@@ -38,9 +45,9 @@
       </div>
       <div>
          Wofür interessierst du dich? 
-         <input type="checkbox" name="html" /> HTML 
+         <input type="checkbox" name="html" value="html" /> HTML 
          <input type="checkbox" name="css" /> CSS 
-         <input type="checkbox" name="js"> JavaScript
+         <input type="checkbox" name="js" /> JavaScript
       </div>
       <div>
          <input type="submit" value="Absenden" />
