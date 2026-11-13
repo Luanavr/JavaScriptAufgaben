@@ -1,25 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+   <title>Canvas</title>
+</head>  
 <body>
-    <script>
-        const kontakt = {
-   vorname: "Urs", 
-   nachname: "Nussbaumer", 
-   telefon: "041 371 24 28", 
-   email: "urs.nussbaumer@ict-bz.ch"
-};
-
-//Kontakt in Web Storage speichern 
-localStorage.setItem("Kontakt", JSON.stringify(kontakt)); 
-
-//Kontakt aus Web Storage auslesen 
-const k = JSON.parse(localStorage.getItem("Kontakt"));
-alert(k.telefon);//041 371 24 28Liste (Array) speichern 
-    </script>
+   <canvas id="cvs" height="480" width="640"></canvas>
+   <script>
+      window.onload = function() {
+         let canvas = document.getElementById("cvs");
+         let context = cvs.getContext("2d");
+         context.beginPath(); 
+         context.moveTo(75, 25);
+         context.lineTo(125, 100); 
+         context.lineTo(25, 100);
+         context.closePath();
+         context.strokeStyle = "rgb(0,0,255)";
+         context.stroke();
+      }
+   </script>
 </body>
-</html>
+</html>     
